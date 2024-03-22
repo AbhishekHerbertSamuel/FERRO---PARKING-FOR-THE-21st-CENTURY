@@ -1,8 +1,9 @@
 
-#ESP8266 CODE IN ARDUINO IDE:
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
+
+#ESP8266 CODE IN ARDUINO IDE:
  
 const char* ssid = "SSN"; // Your WiFi SSID
 const char* password = "Ssn1!Som2@Sase3#"; // Your WiFi password
@@ -14,7 +15,7 @@ int ledPin = 15; // LED output pin
 int value;      // Variable to store the sensor value
 String statusMessage = "vacant"; // Initial status message
 unsigned long previousUpdateTime = 0;
-const unsigned long updateInterval = 5000; // Update every 5 seconds
+const unsigned long updateInterval = 5000; // Update every 5 seconds 
  
 void setup() {
   Serial.begin(115200);
