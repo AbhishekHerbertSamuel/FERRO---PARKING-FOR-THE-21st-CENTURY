@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Parking Slot Status</title>
+    <style>
+        body {
+            font-family: 'Cambria', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center; /* Center all contents in the container */
+        }
+ 
+        h1 {
+            font-size: 30px;
+            text-decoration: underline;
+        }
+ 
+        p, .status, .status-vacant, .status-occupied {
+            font-size: 20px;
+        }
+ 
+        .status {
+            font-weight: bold;
+        }
+ 
+        .status-vacant {
+            color: green;
+        }
+ 
+        .status-occupied {
+            color: red;
+        }
+ 
+        .parking-slot {
+            width: 100px;
+            height: 150px;
+            margin: 10px;
+            border: 2px solid #000;
+            background-color: white;
+            display: inline-block;
+        }
+ 
+        .status-text {
+            font-size: 24px;
+            text-decoration: underline;
+        }
+ 
+        .index p {
+            text-align: center;
+        }
+ 
+        .toggle-buttons {
+            text-align: center;
+        }
+ 
+        .toggle-buttons button {
+            font-size: 16px; /* Reduced font size */
+            padding: 5px 10px; /* Reduced padding */
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px; /* Add margin to create a gap between buttons */
+        }
+ 
+        .toggle-buttons button:hover {
+            background-color: #005cbf;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="container">
+        <h1>Smart Parking System</h1>
+        <p>Welcome!</p>
+        <p>Slot Status Detection Application</p>
+        <div class="index">
+            <p class="status">Index:</p>
+            <p class="status status-occupied">Red - Occupied</p>
+            <p class="status status-vacant">Green - Vacant</p>
+        </div>
+        <div class="parking-slot" id="slot"></div>
+        <p class="status-text">Status - <span id="status">Unknown</span></p>
+        <div class="toggle-buttons">
+            <button onclick="setVacant()">Set Vacant</button>
+            <button onclick="setOccupied()">Set Occupied</button>
+        </div>
+    </div>
+ 
+    <script>
+        function checkParkingStatus(isOccupied) {
+            const slot = document.getElementById("slot");
+            const statusElement = document.getElementById("status");
+ 
+            if (isOccupied) {
+                slot.style.backgroundColor = 'red';
+                statusElement.textContent = 'Occupied';
+                statusElement.classList.remove('status-vacant');
+                statusElement.classList.add('status-occupied');
+            } else {
+                slot.style.backgroundColor = 'green';
+                statusElement.textContent = 'Vacant';
+                statusElement.classList.remove('status-occupied');
+                statusElement.classList.add('status-vacant');
+            }
+        }
+ 
+        // Initial status: Vacant
+        checkParkingStatus(false);
+ 
+        // Function to set status to Vacant
+        function setVacant() {
+            checkParkingStatus(false); // Set to Vacant
+        }
+ 
+        // Function to set status to Occupied
+        function setOccupied() {
+            checkParkingStatus(true); // Set to Occupied
+        }
+    </script>
+</body>
+ 
+</html>
